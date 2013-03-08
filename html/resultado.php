@@ -5,27 +5,23 @@
     </HEAD>
 
     <BODY>
-	<?php
+<?php
 	
 
-	
-	foreach ($_post as $key=> $value){
-		echo $key."==>".$value."<br>";
-		for ($i=0;$_post>1;$i++){
-		echo $i;
-		/*if($key>1){
-			foreach($key as $j=> $value){
-				echo $value;
+	var_dump($_POST);
+	foreach ($_POST as $key=> $value){
+		if(count($_POST[$key])>1){
+			for ($i=0;$i<count($_POST[$key]);$i++){
+				echo $_POST[$key][$i]."<br>";
 			}
-		}*/
-		
+		}else{
+			echo "$key=".$value."<br/>\n";
 		}
-	
 	}
 	
     
 		
- ?>
+?>
     
  
     </BODY>
