@@ -1,5 +1,6 @@
 <?php
 
+
 	class ObjetoDatos
 	{
 		 // Propiedades
@@ -73,6 +74,7 @@
 		
 		public function  cierre(){
 			$par_apertura->close();
+			$resultados->close();
 			$resultados->close();
 		
 		}
