@@ -5,9 +5,9 @@
     </HEAD>
 <BODY>
 Ciudades del Mundo
-
-<?php 
-include("navigation.php");
+<br><br><FORM action="http://localhost/control/html/resultado4.php" method="post">
+<?php
+include("navigation.php"); 
 $conecta_datos = new mysqli('localhost', 'root', '123', "world");
 
 $id=$_GET['id'];
@@ -31,11 +31,12 @@ echo "coneccion Error ($linkidi->connect_errno)
 $resultados =$conecta_datos->query($consulta);
 
 while ($registro = $resultados->fetch_assoc()){
-	echo "Nombre Ciudad: ".$registro["Name"]."<br>";
-	echo "<p>Codigo Pais: <a href='country.php?Code='".$registro["CountryCode"]."'>".$registro["CountryCode"]."</a></p>";
-	echo "<p>Poblacion: ".$registro["Population"]."</p>";
-	echo "<p>Distrito: ".$registro["District"]."</p>";
-	echo "<a href= http://en.wikipedia.org/wiki/".$registro["Name"].">Wikipedia</a><br>";
+	
+
+	echo "<h1>".$registro["Name"]."</h1>";
+	echo "<p><a href='country.php?Code=".$row["CountryCode"]."'></p>"
+	echo $registro ["ID"], "|", $registro["Name"],"|",$registro ["CountryCode"],"|",$registro["District"],"|",$registro["Population"],"<br/>\n";
+
 
 }
  

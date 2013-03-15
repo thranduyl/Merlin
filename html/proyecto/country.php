@@ -6,7 +6,8 @@
 <BODY>
 Ciudades del Mundo
 <br><br><FORM action="http://localhost/control/html/resultado4.php" method="post">
-<?php 
+<?php
+include("navigation.php"); 
 $conecta_datos = new mysqli('localhost', 'root', '123', "world");
 
 $id=$_GET['id'];
