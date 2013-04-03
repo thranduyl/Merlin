@@ -7,25 +7,35 @@
     <BODY>
         Ejemplo de formulario.
 		
-	<br><br><FORM action="http://localhost/control/html/resultado.php" method="post">
+	<br><br><FORM action="http://localhost/control/html/resultado.php" method="post"><!-- inicio del formulario, nos comunicamos con resultado.php indicandole su ruta y con metodo post que es ocultacion de datos-->
     Nombre: <INPUT type="text" name="nombre" value="Nombre"><INPUT type="text" name="apellido" value="Apellido"><BR>
+	<!--creamos dos cajas de tipo texto que podran contener texto para mandarlo a otro archivo-->
 	<br>Genero:<br>
 	<input type="radio" name="Genero" value="Femenino"> Femenino<br>
 	<input type="radio" name="Genero" value="Masculino"> Masculino<br>
+	<!--creamos un radiobutton con dos opciones, en este tipo de elemento solo podemos coger una opcion y se le llama a sus opciones por el mismo nombre
+	aunque el valor sea distinto y a la hora de recoger el valor como en todos los elemntosnos regimos por el nombre-->
 	<br>Edad:<br>
 	<SELECT name="Edad" SIZE=2> 
 	<OPTION value="33">33-55</OPTION>
 	<OPTION value="55">mas de 55</OPTION>
 	</SELECT> 
+	<!--creamos un select con dos opciones, en este tipo de elemento solo podemos coger una opcion y se le llama al propio elmento  a la hora de recoger datos
+	y no a sus opciones. Este elemento es un desplegable y es el value de cada opcion lo que contiene el el valor real a escoger-->
 	<br>Pasatiempos favoritos<br>
 	<input type="checkbox" name="favoritos[]" value="Juegos"> Juegos<input type="checkbox" name="favoritos[]" value="Deportes"> Deportes<br>
 	<input type="checkbox" name="favoritos[]" value="Lectura" > Lectura<input type="checkbox" name="favoritos[]" value="Musica"> Musica<br>
 	<input type="checkbox" name="favoritos[]" value="Informatica"> Informatica<input type="checkbox" name="favoritos[]" value="Tv/Peliculas"> TV/Peliculas<br>
+	<!--creamos un checkbox con 6 opciones, en este tipo de elemento podemos coger varias opciones y se le llama a sus opciones por el mismo nombre[]
+	de manera que declaramos un vector y cada vez que marcamos una opcion marcamos un llenamos una casilla del vector-->
 	Por favor contesta a las siguientes preguntas<br><textarea name="comentario" rows="10" cols="40">¿Donde Naciste?¿Cual es tu asignatura favorita en la escuela?</textarea> 
+	<!--declaramos un area de texto, es mas grande que la caja y podemos almacenar en ella parrafos completos-->
 	<br><input type="submit" value="Enviar">
 	<input type="reset" value="Reset">
+	<!--declaramos dos votones uno tipo submit, para enviar y otro tipo reset para dejar los valor al estado inicial-->
+
 	
+	</FORM><!--cerramos el formulario-->
 	
-	</FORM>
     </BODY>
 </HTML>

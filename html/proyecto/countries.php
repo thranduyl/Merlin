@@ -5,50 +5,41 @@
     </HEAD>
 <BODY>
 Ciudades del Mundo
-<br><br><FORM action="http://localhost/control/html/resultado4.php" method="post">
-<?php
-include("navigation.php"); 
-$conecta_datos = new mysqli('localhost', 'root', '123', "world");
+<?php 
+include("navigation.php");// incluyo un archivo vecino en la misma carpeta por lo que aparecera el contenido de ese archivo al ejecutar este
+require("security.php"); //requiero el codigo de este archivo si el codigo requerido se ejecuta correctamente seguiremos con nuestro codigo, si no no.
+$conecta_datos = new mysqli('localhost', 'root', '123', "world");// creo el objeto base de datos de tipo mysqli le indico el servidor, usuario, contraseña y base de datos
 
-$id=$_GET['id'];
 
-/*if($id==null){
-$consulta="SELECT ID, Name, CountryCode, District, Population From City";
-}else{
-$consulta="SELECT ID, Name, CountryCode, District, Population From City where id=".$id;
 
-}*/
-$consulta="SELECT ID, Name, CountryCode, District, Population From City where id=".$id;
-if($conecta_datos->connect_error){
+
+
+
+if($conecta_datos->connect_error){//llamo a la funcion connect error del objeto mysqli y si devuelve true conexion erronea y salgo
 echo "coneccion Error ($linkidi->connect_errno)
 		$linkidi->connect_error\n";
 	exit;
 }
 
 
+$consulta="SELECT Code, Name From Country"; //declaro la variable consulta y alli meto la consulta que quiero realizar 
 
 
-$resultados =$conecta_datos->query($consulta);
 
-while ($registro = $resultados->fetch_assoc()){
-	
+$resultados =$conecta_datos->query($consulta);// llamo al metodo query del objeto mysqli y le paso la consulta meto el resultado en $resultados
 
-	echo "<h1>".$registro["Name"]."</h1>";
-	echo "<p><a href='country.php?Code=".$row["CountryCode"]."'></p>"
-	echo $registro ["ID"], "|", $registro["Name"],"|",$registro ["CountryCode"],"|",$registro["District"],"|",$registro["Population"],"<br/>\n";
-
-
-}
+while ($registro = $resultados->fetch_assoc()){// llamo al metodo fetchassoc del objeto que he almacenado en resultados de forma que mientras que existan tuplas o registros resultantes de su consulta 
+//los asigno a registro en cada ciclo de forma que registro contendra cada campo y cada valor
+	echo "<p>Nombre Pais: ".$registro["Name"]." | Codigo: "."<a href='country.php?Code=".$registro["Code"]."'>".$registro["Code"]."</a>";
+	}//imprimo el nombre del pais y saco el valor a traves del campo name que saco de registro
+	// hago lo mismo con codigo y saco su valor a atra ves del campo Code, ademas lo pongo como enlace y imprimo como enlace el mismo codigo.
  
 
+$resultados->close();//cierro llamando al metodo close del objeto mysqli y libero la consulta
 
 
-$resultados->close();
-
-
-$conecta_datos->close();
+$conecta_datos->close();// lo mismo con la base de datos
 ?>
 
- </FORM>
  </BODY>
 </HTML>
